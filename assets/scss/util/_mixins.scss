@@ -1,0 +1,113 @@
+@mixin mobile() {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media (min-width: $mobile) and (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin tablet-mobile() {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin not-mobile() {
+  @media (min-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin not-portrait-mobile() {
+  @media (min-width: $portraitMobile) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-o-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@include keyframes(fadeIn) {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@mixin clearfix() {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin aspect-ratio($width, $height) {
+  box-sizing: border-box;
+  position: relative;
+
+  &:before {
+    content: '';
+    display: block;
+    padding-top: ($height / $width) * 100%;
+    width: 100%;
+  }
+
+  > *:first-child {
+		overflow: hidden;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+		z-index: 1;
+  }
+}
+
+@mixin animation($params) {
+  -webkit-animation: #{$params}; /* Safari 4+ */
+  -moz-animation: #{$params}; /* Fx 5+ */
+  -o-animation: #{$params}; /* Opera 12+ */
+  animation: #{$params}; /* IE 10+, Fx 29+ */
+}
+
+@mixin border-radius-corner($horizontal, $vertical, $size) {
+  -webkit-border-#{$vertical}-#{$horizontal}-radius: #{$size};
+  -moz-border-radius-#{$vertical}#{$horizontal}: #{$size};
+  border-#{$vertical}-#{$horizontal}-radius: #{$size};
+}
+
+@mixin appearance($param) {
+  -moz-appearance: $param; /* Firefox */
+	-webkit-appearance: $param; /* Safari and Chrome */
+	appearance: $param;
+}
+
+@mixin no-select() {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

@@ -1,0 +1,132 @@
+.nav {
+  flex: 1 1 auto;
+  position: relative;
+
+  .nav__button {
+    @include appearance(none);
+    align-items: center;
+    background-color: transparent;
+    border-radius: 4px;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    padding: 0;
+    position: absolute;
+    right: 20px;
+    top: -30px;
+    transform: translateY(-50%);
+    width: 40px;
+
+    ion-icon {
+      font-size: 1.8rem;
+    }
+  }
+
+  .nav__menu  {
+    display: none;
+
+    &.nav__menu--open {
+      display: block;
+    }
+  }
+
+  &__menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__menu-item {
+
+    .nav__menu-list .nav__menu-link {
+      padding: 0 20px;
+    }
+  }
+
+  &__menu-link {
+    align-items: center;
+    color: #000000;
+    background-color: transparent;
+    border-radius: 4px;
+    display: block;
+    display: flex;
+    font-size: 1.2rem;
+    height: 40px;
+    padding: 0 10px;
+    text-decoration: none;
+    transition: background-color $menuSpeed, color $menuSpeed;
+    white-space: nowrap;
+
+    &:hover {
+      color: #ffffff;
+      background-color: rgba(0,0,0,0.4);
+      text-decoration: none;
+    }
+  }
+
+  @include not-mobile {
+    align-items: stretch;
+    display: flex;
+    flex: 0 1 auto;
+    padding: 0 10px;
+
+    .nav__button {
+      display: none;
+    }
+
+    .nav__menu {
+      display: block;
+    }
+
+    &__menu-list {
+      display: flex;
+      flex-direction: row;
+
+      .nav__menu-list {
+        background-color: #ffffff;
+        flex-direction: column;
+        height: 0;
+        overflow: hidden;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        z-index: 1;
+      }
+
+      .nav__menu-item--open & {
+        border-bottom: 1px solid #dddddd;
+        border-left: 1px solid #dddddd;
+        border-right: 1px solid #dddddd;
+        display: flex;
+        height: auto;
+      }
+    }
+
+    .nav__menu > .nav__menu-list > .nav__menu-item > .nav__menu-link {
+      height: 78px;
+    }
+
+    &__menu-item {
+      padding: 0;
+      position: relative;
+
+      .nav__menu-link {
+        border-radius: 0;
+        height: 5px 0;
+        position: relative;
+        right: 0;
+        z-index: 2;
+      }
+
+      .nav__menu-list .nav__menu-link {
+        height: 50px;
+      }
+
+      .nav__menu-item--open & {
+        padding: 0;
+      }
+    }
+  }
+}

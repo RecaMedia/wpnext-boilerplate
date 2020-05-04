@@ -1,0 +1,17 @@
+.ui-logo {
+  display: block;
+  fill: #0c262f;
+  height: auto;
+  margin: 0 auto 30px;
+  padding-top: 30px;
+  width: 160px;
+
+  .navbar & {
+    display: inline-block;
+    fill: #ffffff;
+    margin: 0 10px 0 0;
+    padding: 0;
+    vertical-align: top;
+    width: 30px;
+  }
+}

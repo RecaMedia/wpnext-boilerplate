@@ -1,0 +1,57 @@
+#wpnext .inside {
+  background-color: #f6f9fb;
+  margin: 0;
+}
+#WPNextUI > .container {
+  max-width: 100%;
+  padding: 0;
+}
+#WPNextUI > .container > .row {
+  margin: 0;
+}
+.form-field label {
+  display: inline-block;
+}
+.form-group textarea.form-control {
+  width: 100%;
+}
+.code label {
+  font-family: Roboto, sans-serif;
+}
+.ui-card {
+  border-color: #ccd0d4 !important;
+  overflow: hidden;
+  padding: 45px 15px 0 15px !important;
+}
+.ui-card:before {
+  background: #ffffff !important;
+  border-bottom: 1px solid #ccd0d4;
+}
+.ui-card h5 {
+  font-size: 1.2rem;
+  line-height: 1rem;
+  margin: 0 0 15px 0;
+}
+.ui-component-item-btn {
+  font-size: 0 !important;
+  height: 30px;
+  right: 10px !important;
+  top: 0 !important;
+}
+.ui-input {
+  margin-bottom: 15px;
+}
+.ui-input label {
+  display: block;
+  margin-bottom: 10px;
+}
+.ui-input input, .ui-input select {
+  width: 100%
+}
+.ui-btn {
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: 2.30769231;
+  padding: 0 12px;
+  transition: background-color 250ms;
+}

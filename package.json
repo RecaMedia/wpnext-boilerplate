@@ -1,0 +1,62 @@
+{
+  "name": "WPNext",
+  "version": "1.0.0",
+  "auther": "Shannon Reca",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "browser": {
+    "child_process": false
+  },
+  "main": "gulpfile.js",
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "brace": "^0.11.1",
+    "isomorphic-unfetch": "^3.0.0",
+    "jodit": "^3.3.17",
+    "js-cookie": "^2.2.1",
+    "next": "9.3.6",
+    "nookies": "^2.2.4",
+    "react": "16.13.1",
+    "react-ace": "^6.3.2",
+    "react-color": "^2.18.0",
+    "react-datepicker": "^2.14.1",
+    "react-dom": "16.13.1",
+    "react-js-pagination": "^3.0.3",
+    "react-sortable-hoc": "^1.11.0",
+    "react-sortable-tree": "^2.6.2",
+    "react-stripe-elements": "^6.1.2",
+    "react-transition-group": "^4.3.0",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "sweetalert2": "^9.10.12",
+    "sweetalert2-react-content": "^3.0.1",
+    "uuid": "^7.0.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babelify": "^10.0.0",
+    "browser-sync": "^2.26.7",
+    "browserify": "^16.5.1",
+    "connect-history-api-fallback": "^1.6.0",
+    "fs": "0.0.1-security",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-iconfont": "^10.0.3",
+    "gulp-iconfont-css": "^3.0.0",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-sass": "^4.1.0",
+    "merge-stream": "^2.0.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}

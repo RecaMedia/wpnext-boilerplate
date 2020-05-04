@@ -1,0 +1,25 @@
+.ui-file-input {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  outline: none;
+  padding: 0;
+  width: 100%;
+
+  &:focus, &:active {
+    outline: none;
+  }
+
+  .btn {
+    line-height: 26px;
+    white-space: nowrap;
+  }
+
+  & > input {
+    margin-left: 15px;
+    min-width: 50px;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,23 @@
+$z-layers: (
+	'context':          9000,
+	'modal':            8000,
+	'header':           7000,
+	'menu':             6000,
+	'dropdown':         5000,
+	'default':             1,
+	'bottomless': -10000
+);
+
+// A function helper to avoid having to type `map-get($z-layers, ...)`
+// ---
+// @param [string] $component: the layer to use
+// ---
+// @return [number] | [null]
+
+@function z($layer) {
+	@if not map-has-key($z-layers, $layer) {
+		@warn "No z-index found in $z-layers map for `#{$layer}`. Property omitted.";
+	}
+	
+	@return map-get($z-layers, $layer);
+}

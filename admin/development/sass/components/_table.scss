@@ -1,0 +1,37 @@
+.ui-table {
+  border: 1px solid $tableBorder;
+  border-radius: 4px;
+  overflow: hidden;
+
+  table {
+    
+    th, td {
+      border-color: $tableBorder;
+    }
+  }
+
+  thead th {
+    border-bottom: 1px solid $tableBorder;
+  }
+
+  th {
+    border-top: none;
+    
+    &:first-of-type {
+      border-right: 1px solid $tableBorder;
+      text-align: center;
+      width: 30px;
+    }
+  }
+
+  tbody tr:last-of-type {
+    
+    td {
+      border-bottom: none;
+    }
+
+    th {
+      border-bottom: none;
+    }
+  }
+}

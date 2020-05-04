@@ -1,0 +1,195 @@
+%default-input {
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+  padding: 0 4px;
+  width: 100%;
+}
+
+%default-button {
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+  cursor: pointer;
+  display: block;
+  font-size: 0.8rem;
+  font-weight: normal;
+  text-align: center;
+  transition: background-color $menuSpeed;
+}
+
+.form {
+  margin: 0 auto 30px;
+  max-width: 600px;
+  width: 100%;
+
+  legend {
+    font-size: 1rem;
+    margin: 0 auto;
+  }
+
+  fieldset {
+    border-radius: 20px;
+    border: 1px solid #dddddd;
+    padding: 20px;
+  }
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    max-width: 550px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      padding: 2px;
+    }
+
+    &--text, &--email, &--tel, &--password, &--select, &--textarea, &--file {
+
+      & > span {
+        display: block;
+      }
+
+      input, select, textarea {
+        @extend %default-input;
+      }
+
+      input, select {
+        height: 30px;
+      }
+
+      select {
+        cursor: pointer;
+      }
+
+      textarea {
+        height: 60px;
+        padding: 4px;
+      }
+
+      input[type="file"] {
+        @include no-select();
+        cursor: pointer;
+        font-size: 0;
+        height: 100%;
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+      }
+    }
+
+    &--file {
+    
+      span {
+        @extend %default-input;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: 30px;
+        padding: 0;
+        position: relative;
+
+        &:before {
+          content: attr(data-value);
+          cursor: pointer;
+          direction: rtl;
+          display: block;
+          flex: 1 1 auto;
+          font-size: 0.8rem;
+          line-height: 30px;
+          margin: 0 8px;
+          overflow: hidden;
+          padding: 0;
+          text-align: right;
+          white-space: nowrap;
+        }
+
+        &:after {
+          @extend %default-button;
+          content: "Browse...";
+          flex: 0 1 90px;
+          height: 20px;
+          line-height: 20px;
+          margin: 3px;
+        }
+
+        &:hover {
+
+          &:after {
+            background-color: #dddddd;
+          }
+        }
+      }
+    }
+
+    &--checkbox, &--radio {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+
+      label {
+        cursor: pointer;
+      }
+
+      input {
+        cursor: pointer;
+        margin: 5px 10px 5px 5px;
+      }
+    }
+  }
+
+  &__card {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    label {
+      padding: 2px;
+    }
+
+    &--wrapper {
+      align-items: stretch;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    &__number, &__exp, &__cvc {
+      @extend %default-input;
+      height: 30px;
+      position: relative;
+
+      .__PrivateStripeElement {
+        top: 15px;
+        transform: translateY(-50%);
+      }
+    }
+
+    &__number {
+      flex: 0 1 50%;
+    }
+
+    &__exp {
+      flex: 0 1 22%;
+    }
+
+    &__cvc {
+      flex: 0 1 22%;
+    }
+  }
+
+  &__button {
+    @extend %default-button;
+    background-color: $buttonBg;
+    border: 1px solid $buttonBorder;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 0 0 auto;
+
+    &:hover {
+      background-color: $buttonBorder;
+    }
+  }
+}

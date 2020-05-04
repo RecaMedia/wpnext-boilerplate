@@ -1,0 +1,50 @@
+.ui-datetime {
+
+  &--both {
+
+    .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item {
+      padding: 0;
+      font-size: 10px;
+    }
+  }
+
+  &--date {
+
+    .react-datepicker-popper {
+      background-color: #ffffff;
+      border: 1px solid #aeaeae;
+      border-radius: 4px;
+    }
+    
+    .react-datepicker {
+      border: none;
+      width: 240px;
+    
+      .react-datepicker__month-container{
+        width: 240px;
+      }
+    }
+  }
+
+  &--time {
+
+    .react-datepicker-popper {
+      background-color: #ffffff;
+      border: 1px solid #aeaeae;
+      border-radius: 4px;
+    }
+    
+    .react-datepicker {
+      border: none;
+      width: 120px;
+
+      .react-datepicker__time-container {
+        width: 120px;
+
+        .react-datepicker__time-box {
+          width: 120px;
+        }
+      }
+    }
+  }
+}

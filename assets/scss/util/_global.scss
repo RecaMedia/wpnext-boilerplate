@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@300;400;800&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+.preloaded-images {
+  height: 0;
+  left: -9999px;
+  opacity: 0;
+  overflow: hidden;
+  position: fixed;
+  top: -9999px;
+  width: 0;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  font-size: 14px;
+  margin: 0;
+  min-height: 100vh;
+  padding: 15px;
+
+  @include not-mobile() {
+    padding: 30px;
+  }
+}
+
+input, select, textarea {
+  font-family: 'Muli', sans-serif;
+  font-size: 0.8rem;
+  font-weight: lighter;
+}

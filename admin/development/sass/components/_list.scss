@@ -1,0 +1,25 @@
+.ui-list {
+
+  &__item {
+    padding: 0;
+    transition: background-color $animTiming;
+
+    a {
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline !important;
+      }
+    }
+
+    &:hover {
+      background-color: lighten($trim, 38%);
+    }
+  }
+
+  &__item-button {
+    float: right;
+    margin-bottom: 0 !important;
+    margin: 0 0 0 10px;
+  }
+}

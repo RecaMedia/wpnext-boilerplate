@@ -1,0 +1,12 @@
+<VirtualHost *:80>
+	ServerName yourdomain.local
+	DocumentRoot "c:/path/to/themes/wp-next"
+
+  <Location />
+    ProxyPass http://localhost:3000/
+  </Location>
+
+	<Directory "c:/path/to/wp-content/themes/wp-next">
+		...
+	</Directory>
+</VirtualHost>

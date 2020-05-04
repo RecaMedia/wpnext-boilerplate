@@ -1,0 +1,26 @@
+$nav_bar: #343a40;
+
+$site_background: #eef7f9;
+$site_text: #283d42;
+
+$dev_site_background: #e0dae4;
+$dev_site_text: #251a2f;
+$dev_menu_background: #402b50;
+
+$ab_text: #5fa67b;
+$ab_border: #91e1b0;
+$ab_background: #effff6;
+
+$input_background: lighten($dev_site_background, 10%);
+
+$borderColor: #DDDDDD;
+
+$shadow: 0 0 0 0.5px rgba(49,49,93,.03), 0 2px 8px 0 rgba(49,49,93,.1), 0 1px 2px 0 rgba(0,0,0,.08);
+
+$trim: #0071A1;
+
+$buttonHoverColor: lighten($trim, 35%);
+
+$animTiming: 250ms;
+
+$tableBorder: lighten($site_text, 70%);

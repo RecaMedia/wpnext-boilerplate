@@ -1,0 +1,80 @@
+.ui-navlist {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none;
+
+  &--menus {
+
+    .list-group-item {
+      align-items: stretch;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      height: 32px;
+      padding: 2px;
+
+      button {
+        appearance: none;
+        background-color: transparent;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        height: 26px;
+        outline: none;
+        text-align: center;
+        transition: background-color $animTiming;
+    
+        & + button {
+          margin-left: 5px;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        &:nth-child(1) {
+          flex: 1 1 auto;
+          text-align: left;
+        }
+    
+        &:nth-child(2) {
+          flex: 0 1 30px;
+        }
+    
+        &:hover {
+          background-color: $buttonHoverColor;
+        }
+      }
+    }
+  }
+
+  &--menu-items {
+
+    .list-group-item {
+      transition: background-color $animTiming;
+      
+      &:not(.ui-navlist__item-parent):hover {
+        background-color: $buttonHoverColor;
+      }
+    }
+  }
+
+  &__item-parent {
+
+    .ui-navlist {
+      height: 0;
+      overflow: hidden;
+    }
+
+    &--open {
+
+      .ui-navlist {
+        height: auto;
+        margin-top: 7px;
+      }
+    }
+  }
+}

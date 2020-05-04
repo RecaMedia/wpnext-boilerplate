@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Header",
+    "slug": "header"
+  },
+  {
+    "name": "Social",
+    "slug": "social"
+  },
+  {
+    "name": "Footer",
+    "slug": "footer"
+  }
+]

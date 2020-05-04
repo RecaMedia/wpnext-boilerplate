@@ -1,0 +1,53 @@
+.ui-selector {
+  padding: 0;
+  position: relative;
+
+  &__btn {
+    padding: .375rem .75rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__close-btn {
+    margin: 0;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  }
+
+  &__items {
+    background-color: transparent;
+    border-radius: 4px;
+    box-shadow: $shadow;
+    cursor: initial;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    opacity: 0;
+    overflow: hidden;
+    padding: 10px 55px 10px 10px;
+    pointer-events: none;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    z-index: 2;
+
+    button:not(.ui-selector__close-btn) {
+      margin: 5px;
+    }
+
+    .ui-selector.open & {
+      background-color: $input_background;
+      border: 1px solid $borderColor;
+      height: auto;
+      max-height: 300px;
+      max-width: 500px;
+      min-height: 65px;
+      opacity: 1;
+      pointer-events: initial;
+      right: 0;
+      top: 0;
+      width: 500px;
+    }
+  }  
+}

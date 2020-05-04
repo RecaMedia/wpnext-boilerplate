@@ -1,0 +1,117 @@
+.ui-component {
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid $borderColor;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin: 0 0 15px 0;
+  padding: 15px 15px 0 15px;
+
+  &__content {
+    flex: 1 0 100%;
+    margin-bottom: 10px;
+
+    button.ui-btn.ui-btn-text{
+      margin: 0;
+    }
+  }
+
+  &__title {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    color: $trim;
+    cursor: pointer;
+    float: left;
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: normal;
+    margin: 0;
+    outline: none;
+    transition: color $animTiming;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      color: #000000;
+    }
+  }
+}
+
+.ui-component-item-handle {
+  color: $trim;
+  cursor: move;
+  font-size: 1.2rem;
+  left: 50%;
+  position: absolute;
+  top: 2px;
+  transform: translate(-50%, 0);
+  z-index: 1;
+}
+
+.ui-component-item-wrapper {
+  position: relative;
+  margin-bottom: 30px;
+
+  &:not(.ui-input-fields) {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+      -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+  }
+
+  .ui-component-item-btn {
+    font-size: 1.30rem;
+    position: absolute;
+    right: 30px;
+    top: 2px;
+    z-index: 1;
+
+    .icon.ion-md-remove-circle-outline {
+      line-height: 2rem;
+    }
+  }
+}
+
+.ui-component-item {
+
+  &__message {
+    color: #cccccc;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+}
+
+.ui-components-inserter {
+  border-radius: 4px;
+  border: 1px solid $trim;
+  display: table;
+  margin: 0 auto 30px;
+  padding: 5px;
+  position: relative;
+
+  &:before {
+    border-bottom: 7px solid $trim;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 0 solid transparent;
+    content: '';
+    display: block;
+    height: 7px;
+    left: 50%;
+    position: absolute;
+    top: -7px;
+    transform: translateX(-50%);
+    width: 14px;
+  }
+  
+  .btn {
+    margin: 5px;
+  }
+}

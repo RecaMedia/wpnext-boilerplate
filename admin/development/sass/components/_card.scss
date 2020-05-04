@@ -1,0 +1,363 @@
+.ui-card {
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #e1e1e1;
+  margin-bottom: 30px;
+  padding: 30px 15px 15px;
+  position: relative;
+
+  &:before {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f2f2f2+0,ffffff+100 */
+    background: #f2f2f2; /* Old browsers */
+    background: -moz-linear-gradient(top,  #f2f2f2 0%, #ffffff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #f2f2f2 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #f2f2f2 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+    content: '';
+    display: block;
+    height: 30px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px 15px;
+  }
+
+  &__version-menu {
+    float: right;
+
+    .ui-component-item-wrapper & {
+      margin-right: 30px;
+    }
+
+    button {
+      background-color: $buttonHoverColor;
+      border: 1px solid lighten($trim, 30%);
+      color: $site_text;
+      cursor: pointer;
+      font-size: 0.8rem;
+      height: 24px;
+      line-height: 20px;
+      outline: none;
+      padding: 0 6px;
+      transition: background-color $animTiming, border-color $animTiming, color $animTiming;
+
+      &:hover {
+        background-color: $trim;
+        border-color: $trim;
+        color: #FFFFFF;
+      }
+    }
+
+    button:first-child {
+      border-bottom-left-radius: 4px;
+      border-top-left-radius: 4px;
+    }
+
+    button:last-child {
+      border-bottom-right-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    button.ui-card__version-menu--selected {
+      background-color: transparent;
+      cursor: initial;
+
+      &:hover {
+        background-color: transparent;
+        border-color: lighten($trim, 30%);
+        color: $site_text;
+      }
+    }
+  }
+
+  & > .row {
+    margin-bottom: 15px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 0;
+    }
+  }
+
+  &-post-header {
+
+    &--transparent {
+      background-color: transparent;
+      box-shadow: none;
+      padding: 0;
+    }
+
+    div[class^="col-"], div[class*=" col-"] {
+      margin: 5px 0;
+    }
+    
+    textarea {
+      height: 100px;
+    }
+
+    .react-input-tags-input-tags {
+      background-clip: padding-box;
+      background-color: #f9f7fa;
+      border-radius: .25rem;
+      border: none;
+      color: #495057;
+      display: block;
+      font-family: monospace;
+      font-size: .8rem;
+      font-weight: 400;
+      line-height: 1.5;
+      min-height: 100px;
+      outline: none;
+      padding: .375rem;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+      width: 100%;
+    }
+
+    .react-input-tags-input {
+      background: transparent;
+      border: none;
+      height: 2rem;
+      outline: 0;
+      padding: 4px;
+      /* input element does * not * inherit font styling by default */
+      font-family: inherit;
+      font-size: inherit;
+
+      &:before {
+        display: block;
+        content: '';
+        width: 100vw;
+        height: 100vh;
+        background-color: pink;
+      }
+    }
+    
+    .react-input-tags-tag {
+      background-color: $trim;
+      border-radius: 4px;
+      color: #FFFFFF;
+      display: inline-block;
+      margin: 4px;
+      padding: 4px 0 4px 8px;
+      vertical-align: top;
+    }
+    
+    .react-input-tags-tag span {
+      cursor: default;
+      display: inline-block;
+      vertical-align: top;
+    }
+    
+    .react-input-tags-tag button {
+      background-color: transparent;
+      border: 0;
+      color: #FFFFFF;
+      cursor: pointer;
+      height: 100%;
+      outline: 0;
+    }
+    
+    .react-input-tags-suggestion-list {
+      max-width: 300px;
+      margin-top: inherit;
+      list-style: none;
+      padding-left: 0;
+      background-color: white;
+      box-shadow: 0 6px 16px 0 lightgray;
+    }
+    
+    .react-input-tags-suggestion {
+      display: flex;
+      padding: 4px;
+      cursor: pointer;
+    }
+    
+    .react-input-tags-suggestion.highlighted {
+      background-color: rgb(102, 72, 151);
+      color: white;
+    }
+    
+    .react-input-tags-suggestions-loader {
+      display: inline-block;
+      margin-left: 5px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid grey;
+      border-top: 2px solid black;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  }
+
+  &--alt {
+    background-color: #f9f9f9;
+  }
+
+  &__nav {
+    
+    .ui-input-wrapper, .btn {
+      margin-right: 10px;
+      vertical-align: top;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    & > div[class^="col-"], & > div[class*=" col-"] {
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+
+      & > div[class^="col-"], & > div[class*=" col-"] {
+        text-align: left;
+      }
+
+      .ui-input-wrapper, .btn {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  &__ignored-group {
+    border-radius: 4px;
+    border: 1px solid #eeeeee;
+    margin-top: 10px;
+    padding: 10px;
+    text-align: right;
+
+    .btn {
+      border-radius: .2rem;
+      font-size: .6rem;
+      height: 20px;
+      line-height: 1.2;
+      padding: .2rem .4rem;
+      text-transform: uppercase;
+    }
+  }
+
+  &__ignored-list {
+    background-color: #f9f9f9;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top: 1px solid #eeeeee;
+    margin: 0 -30px -30px;
+    padding: 10px 30px;
+    font-size: 12px;
+
+    .list-group {
+      margin-top: 10px;
+    }
+
+    .list-group-item {
+      padding: .5rem 1rem;
+      text-align: left;
+
+      .btn {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  &__ignored-item-action {
+    float: right;
+  }
+
+  &__title {
+    margin-bottom: 30px;
+
+    h3 {
+      display: inline-block;
+      font-size: 1.25rem;
+      line-height: 30px;
+      margin: 0;
+    }
+
+    button {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    button + button {
+      margin-left: 5px;
+    }
+
+    &__menu {
+      float: right;
+
+      .ui-input-wrapper {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &--options {
+    margin: 0 auto;
+    max-width: 800px;
+    width: 100%;
+
+    .form-group {
+      margin: 0;
+
+      &.row {
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        label {
+          align-items: center;
+          display: flex;
+          flex: 0 1 auto;
+          margin: 0;
+          padding-right: 10px;
+          white-space: nowrap;
+        }
+
+        input {
+          flex: 1 1 auto;
+        }
+      }
+    }
+
+    .row:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .ui-card__title {
+      margin-bottom: 0;
+
+      button {
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+
+  &__cut-out {
+    background-color: $site_background;
+    border-radius: 4px;
+    border: 1px solid #f1f1f1;
+    padding: 15px;
+
+    .ui-card {
+      margin-bottom: 0;
+    }
+  }
+}

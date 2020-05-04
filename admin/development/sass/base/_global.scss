@@ -1,0 +1,83 @@
+html {
+  overflow-x: hidden;
+}
+
+body {
+  color: $site_text;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  transition: color $animTiming, background-color $animTiming;
+
+  &.ui-dev-mode {
+    background-color: $dev_site_background;
+    color: $dev_site_text;
+  }
+}
+
+input {
+  transform: translateZ(0);
+}
+
+a.ui-btn, button.ui-btn, .ui-btn {
+  background-color: $trim;
+  border: none;
+  color: #fff;
+  font-size: .8rem;
+
+  i {
+    pointer-events: none;
+  }
+
+  &--icon {
+    border-radius: 50%;
+    font-size: 1.2rem;
+    height: 28px;
+    line-height: 1;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 28px;
+  }
+
+  &:hover {
+    background-color: darken($trim, 15%);
+    border-color: darken($trim, 15%);
+    color: #fff;
+  }
+
+  &.ui-btn-white {
+    background-color: white;
+    border: 1px solid #DDDDDD;
+    color: #777777;
+
+    &:hover {
+      background-color: $buttonHoverColor;
+    }
+  }
+
+  &.ui-btn-text {
+    background-color: transparent;
+    border: none;
+    color: #777777;
+    margin-bottom: .5rem;
+    padding: 0 5px;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+
+    & .ui-btn {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.icon.ion-md-remove-circle-outline {
+  color: #ff9a9a;
+  font-size: 1.30rem;
+  line-height: 1rem;
+}
+
+.WPN-wrapper {
+  padding: 15px;
+}

@@ -1,0 +1,31 @@
+.ui-curtain {
+  background-color: rgba(#000000, 0.7);
+  height: 100vh;
+  left: -100vw;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: opacity $animTiming;
+  width: 100vw;
+  z-index: z('modal');
+
+  &--show {
+    left: 0;
+    opacity: 1;
+  }
+
+  &__content {
+    left: 50%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: calc(100% - 60px);
+    z-index: z('modal') + 1;
+
+    & > *:first-child {
+      margin: 0 auto;
+    }
+  }
+}

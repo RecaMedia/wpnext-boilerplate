@@ -1,0 +1,21 @@
+.ui-dev-menu {
+  transition: padding $animTiming, background-color $animTiming;
+
+  a {
+    transition: color $animTiming;
+  }
+
+  .ui-dev-mode & {
+    background-color: $dev_menu_background;
+    padding: 0 8px;
+    border-radius: 4px;
+
+    a {
+      color: #FFFFFF;
+    }
+
+    .dropdown-menu {
+      padding: 0 0 5px 0;
+    }
+  }
+}

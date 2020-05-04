@@ -1,0 +1,24 @@
+.ui-input-wrapper {
+  border-radius: 4px;
+  border: 1px dashed darken($input_background, 10%);
+  cursor: pointer;
+  display: inline-block;
+  font-size: .8rem;
+  padding: .295rem .6rem;
+  vertical-align: middle;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none;
+ 
+  .ui-input {
+    margin: 0 5px 0 0;
+  }
+}
+
+.ui-input-fields {
+  margin: -5px -15px -5px -15px;
+}

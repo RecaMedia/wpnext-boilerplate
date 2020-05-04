@@ -1,0 +1,268 @@
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 20px;
+
+  & + .lead {
+    margin-top: -20px;
+  }
+}
+
+.badge {
+  font-family: arial;
+  transform: translateY(-1px);
+}
+
+.btn-link {
+  color: $trim;
+
+  &:hover {
+    color: darken($trim, 15%);
+  }
+}
+
+.nav-link {
+  display: block;
+  padding: 0.2rem 0;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.dropdown-menu {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: $shadow;
+
+  .ui-menu-col & {
+    background-color: transparent;
+    border-radius: initial;
+    border: none;
+    padding: inherit;
+    position: relative;
+  }
+}
+
+.dropdown-divider {
+  border-color: lighten($site_text, 70%);
+  transition: border-color $animTiming;
+}
+
+.dropdown-item {
+  color: $site_text;
+
+  .ui-menu-col & {
+    font-size: .8rem;
+    padding: 0rem 1rem;
+
+    &:focus {
+      background-color: transparent;
+    }
+
+    &:hover {
+      background-color: transparent;
+      text-decoration: underline;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.active, &:active {
+    color: inherit;
+    background-color: inherit;
+  }
+}
+
+.table {
+  border-radius: 4px;
+  margin-bottom: 0;
+}
+
+.form-control, .react-datepicker-wrapper {
+  background-color: #fff !important;
+  border: 1px solid #dddddd !important;
+  font-family: monospace;
+  font-size: .8rem;
+  outline: none;
+
+  &:focus {
+    background-color: #f7f7f7 !important;
+    box-shadow: none;
+  }
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.react-datepicker {
+  width: 313px;
+
+  &__input-container {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-clip: padding-box;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+
+  .react-datepicker__input-container {
+
+    input {
+      appearance: none;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      width: 100%;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.progress-bar {
+  background-color: $trim;
+}
+
+.ql-toolbar.ql-snow {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.swal2-close {
+
+  &:active, &:focus {
+    outline: none !important;
+  }
+}
+
+.swal2-confirm {
+  background-color: $trim !important;
+  transition: background-color $animTiming, color $animTiming;
+
+  &:hover {
+    background-color: $buttonHoverColor !important;
+    background-image: none;
+    color: $trim !important;
+  }
+}
+
+.swal2-container {
+
+  * {
+    font-family: 'Roboto', sans-serif !important;
+  }
+}
+
+.list-group-item {
+  border-color: $tableBorder;
+  cursor: pointer;
+  font-size: 0.8rem;
+  line-height: initial;
+  padding: 7px 10px;
+
+  * {
+    border-color: $tableBorder;
+  }
+
+  span {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 1rem;
+  }
+
+  &.list-group-item-action {
+    color: $trim;
+  }
+
+  i.icon {
+    color: $trim;
+    float: right;
+    height: 1rem;
+    line-height: 1rem;
+
+    &.ion-md-arrow-dropdown, &.ion-md-arrow-dropup {
+      font-size: 1.4rem;
+
+      &:before {
+        line-height: 0.8rem;
+      }
+    }
+  }
+
+  .list-group-item {
+    position: relative;
+    border: none;
+    padding: 7px 0 7px 10px;
+
+    &:before {
+      background-color: $borderColor;
+      content:'';
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 1px;
+    }
+
+    &:after {
+      background-color: $borderColor;
+      content:'';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      top: 50%;
+      width: 7px;
+    }
+
+    &:last-of-type {
+
+      &:before {
+        height: 50%;
+      }
+    }
+  }
+
+  .icon.ion-md-remove-circle-outline {
+    color: #ff9a9a !important;
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+}
+
+.swal2-container.swal2-shown {
+  z-index: z('modal') + 1;
+}
+
+.jodit_workplace {
+  align-items: stretch;
+  justify-content: stretch;
+  
+  .jodit_wysiwyg {
+    flex: 1 1 auto;
+  }
+
+  @media (min-width: 786px) {
+    min-height: 400px !important;
+  }
+}

@@ -1,0 +1,104 @@
+.ui-size-selector {
+  margin-left: 15px;
+  width: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  &__name {
+    flex: 0 0 100%;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 12px;
+    padding-bottom: 4px;
+  }
+
+  &__buttons {
+    position: relative;
+    flex: 0 0 100%;
+    display: flex;
+    align-items: flex-start;
+
+    button {
+      cursor: pointer;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    pointer-events: none;
+  }
+
+  button {
+    background: transparent;
+    border: 1px solid lighten($borderColor, 7%);
+    flex: 1 1 auto;
+    font-size: 0;
+    height: 20px;
+    padding: 0;
+
+    &:focus, &:hover {
+      outline: none;
+      box-shadow: none;
+    }
+
+    &:hover {
+      background-color: lighten($buttonHoverColor, 5%);
+      border-color: darken($buttonHoverColor, 5%);
+    }
+
+    &:first-of-type {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+
+    &:last-of-type {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+
+  button + button {
+    border-left: none;
+  }
+
+  &.quarter {
+
+    button:nth-child(1) {
+      background-color: lighten($buttonHoverColor, 5%);
+      border-color: darken($buttonHoverColor, 5%);
+    }
+  }
+
+  &.half {
+
+    button:nth-child(1), button:nth-child(2) {
+      background-color: lighten($buttonHoverColor, 5%);
+      border-color: darken($buttonHoverColor, 5%);
+    }
+  }
+
+  &.three-fourth {
+
+    button:nth-child(1), button:nth-child(2), button:nth-child(3) {
+      background-color: lighten($buttonHoverColor, 5%);
+      border-color: darken($buttonHoverColor, 5%);
+    }
+  }
+
+  &.full {
+
+    button:nth-child(1), button:nth-child(2), button:nth-child(3), button:nth-child(4) {
+      background-color: lighten($buttonHoverColor, 5%);
+      border-color: darken($buttonHoverColor, 5%);
+    }
+  }
+}
