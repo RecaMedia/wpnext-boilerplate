@@ -2,7 +2,7 @@
 
 # About WPNext
 
-WPNext was created with the goal of combining the development style of [ReactJS](https://reactjs.org/)/[NextJS](https://nextjs.org/) with the community support of WordPress, to rapidly create [WordPress](https://wordpress.org/) themes completely build with React. Along with this, the admin UI/UX concept was pulled from [JayDMS](https://github.com/RecaMedia/JayDMS-Dev) that allows the user to easily construct pages with React components. This boilerplate includes a hero and blog component as a start.
+WPNext was created with the goal of combining the development style of [ReactJS](https://reactjs.org/)/[NextJS](https://nextjs.org/) with the community support of WordPress, to rapidly create [WordPress](https://wordpress.org/) themes completely built with React. Along with this, the admin UI/UX concept was pulled from [JayDMS](https://github.com/RecaMedia/JayDMS-Dev) that allows the user to easily construct pages with React components. This boilerplate includes a hero and blog component as a start.
 
 # Getting Started
 
