@@ -1,8 +1,8 @@
-![alt text](https://github.com/RecaMedia/wpnext-boilerplate/blob/master/screenshot.png "WPNext")
+![alt text](https://github.com/RecaMedia/wpnext-boilerplate/blob/master/banner.jpg "WPNext")
 
 # About WPNext
 
-WPNext was created with the goal of combining the development style of [ReactJS](https://reactjs.org/)/[NextJS](https://nextjs.org/) with the community support of WordPress, to rapidly create [WordPress](https://wordpress.org/) themes completely build with React. Along with this, the admin UI/UX concept was pulled from [JayDMS](https://github.com/RecaMedia/JayDMS-Dev) that allows the user to easily construct pages with React components.
+WPNext was created with the goal of combining the development style of [ReactJS](https://reactjs.org/)/[NextJS](https://nextjs.org/) with the community support of WordPress, to rapidly create [WordPress](https://wordpress.org/) themes completely build with React. Along with this, the admin UI/UX concept was pulled from [JayDMS](https://github.com/RecaMedia/JayDMS-Dev) that allows the user to easily construct pages with React components. This boilerplate includes a hero and blog component as a start.
 
 # Getting Started
 
@@ -54,7 +54,7 @@ All components that will appear within the WPNext Builder live under `/component
 $ gulp new-component --name [componentName]
 ```
 
-Use NextJS commands as needed.
+**Use NextJS commands as needed.**
 
 ```sh
 $ npm run dev
@@ -62,7 +62,7 @@ $ npm run build
 $ npm start
 ```
 
-You will need two URLs to make this theme work. The first URL would be for accessing the WordPress admin and it's contents. The second URL for the Front-End which is run by NextJS. Use the `vhost-example.txt` example below for the second URL. Also, you'll need to change the home URL within the WordPress admin settings.
+You will need two URLs to make this theme work. The first URL would be for accessing the WordPress admin and it's contents. The second URL for the Front-End which is run by NextJS. Use the `vhost-example.txt` example below for the second URL. Also, you'll need to change the home URL within the WordPress admin settings. Ex: `wp.yourdomain.local & yourdomain.local`.
 
 ```sh
 <VirtualHost *:80>
