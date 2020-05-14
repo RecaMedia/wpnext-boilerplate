@@ -2,7 +2,6 @@ const defaultState = {
 	global: {
     cookies: null,
     page: null,
-    WPCategories: [],
     WPInfo: null
   }
 };

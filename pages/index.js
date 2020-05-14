@@ -1,8 +1,8 @@
 import React from 'react';
-import Wrapper from '../jsx/util/wrapper';
-import Post from '../jsx/views/post';
-import GetInitialProps from '../jsx/util/get-initial-props';
-import serverInfo from '../configs/server-info.json';
+import Wrapper from 'root/jsx/util/wrapper';
+import WPView from 'root/jsx/views/wp-view';
+import GetInitialProps from 'root/jsx/util/get-initial-props';
+import serverInfo from 'root/configs/server-info.json';
 
 /*
 // Authenticated API call example
@@ -47,7 +47,7 @@ Wrapper passes down the following props to the child
 */
 const homePage = GetInitialProps(frontpage, (props) => (
   <Wrapper {...props}>
-    <Post/>
+    <WPView type="post"/>
   </Wrapper>
 ));
 

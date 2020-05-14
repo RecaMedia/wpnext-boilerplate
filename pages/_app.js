@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../public/static/css/admin-min.css';
+import 'root/public/static/css/admin.css';
 
 const App = ({Component, pageProps }) => (
   <React.Fragment>

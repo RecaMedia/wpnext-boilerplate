@@ -7,9 +7,9 @@
 * Version: 1.3.1
 * Author: Fulvio Notarstefano
 *********************************************/
-include_once ABSPATH . 'wp-content/themes/wp-next/includes/vendors/wp-api-menus/wp-api-menus-v1.php';
+include_once dirname(dirname(__FILE__)).'/includes/vendors/wp-api-menus/wp-api-menus-v1.php';
 // WP API v2.
-include_once ABSPATH . 'wp-content/themes/wp-next/includes/vendors/wp-api-menus/wp-api-menus-v2.php';
+include_once dirname(dirname(__FILE__)).'/includes/vendors/wp-api-menus/wp-api-menus-v2.php';
 // Check if wp_rest_menus_init exist
 if ( ! function_exists ( 'wp_rest_menus_init' ) ) {
   function wp_rest_menus_init() {

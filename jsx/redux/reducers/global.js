@@ -24,15 +24,6 @@ const global = function(state, action) {
 			break;
     }
 
-    case "WP_CATEGORIES" : {
-
-      state = Object.assign({}, state, {
-        WPCategories: action.WPCategories
-      });
-
-			break;
-    }
-
     case "WP_INFO" : {
       
       state = Object.assign({}, state, {

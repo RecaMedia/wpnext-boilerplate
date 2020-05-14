@@ -6,12 +6,7 @@ header {
   flex-direction: column;
   justify-content: stretch;
   margin: -30px -30px 0;
-  opacity: 0;
   z-index: z('header');
-
-  &.header--fadein {
-    animation: forwards fadeIn $menuSpeed;
-  }
 
   &.header--sticky {
     left: 0;

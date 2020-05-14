@@ -1,6 +1,7 @@
 import React from 'react';
 import Pagination from "react-js-pagination";
 import ProcessCategories from './process-categories';
+import MediaFile from '../../jsx/modules/media-file';
 import GeneralFunc from '../../jsx/util/general-functions';
 import apiCall from '../../jsx/util/api-call';
 
@@ -56,7 +57,7 @@ export default class Blog extends React.Component {
 		let posts = <div>
 			{this.state.displayList.map((post,i) => {
 				return <div key={i} className="blog__item">
-					{(post.featured_media ? <div className="blog__featured"><GeneralFunc.MediaFile id={post.featured_media} size="medium_large"/></div> : null)}
+					{(post.featured_media ? <div className="blog__featured"><MediaFile media={post.featured_media} size="medium_large"/></div> : null)}
 					<div className="blog__text">
 						<a href={GeneralFunc.convertURLs(post.link)}><h3>{post.title.rendered}</h3></a>
 						<div className="blog__categories">

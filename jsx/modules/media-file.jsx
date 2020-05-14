@@ -1,16 +1,17 @@
 import {useEffect, useState} from 'react';
-import {Transition} from 'react-transition-group'
+import {Transition} from 'react-transition-group';
 import apiCall from '../util/api-call';
 import Loading from '../util/loading';
 
-const MediaFile = ({id, size, children}) => {
+const MediaFile = ({media, size, children}) => {
   // Acceptable sizes are ['medium','large','thumbnail','medium_large','1536x1536','full']
-  const [loading, setLoading] = useState(true);
-  const [imageURL, setImageURL] = useState("/static/img/placeholder.png");
+  const [loading, setLoading] = useState((typeof media === 'object' ? false : true));
+  const [imageURL, setImageURL] = useState((typeof media === 'object' ? media.media_details.sizes[size].source_url : "/static/img/placeholder.png"));
+  const [mediaObj, setMediaObj] = useState(media);
 
   const defaultStyle = {
     backgroundImage: "url('" + imageURL + "')",
-    transition: 'opacity 200ms ease',
+    transition: 'opacity 250ms ease',
     opacity: 1
   };
 
@@ -22,12 +23,15 @@ const MediaFile = ({id, size, children}) => {
   };
 
   useEffect(() => {
-    apiCall("wp/v2/media/" + id).then((res) => {
-      // Turn off loading
-      setLoading(false);
-      // Replace placeholder with actual image
-      setImageURL(res.media_details.sizes[size].source_url)
-    });
+    if (typeof media === 'number') {
+      apiCall("wp/v2/media/" + media).then((res) => {
+        // Turn off loading
+        setLoading(false);
+        // Replace placeholder with actual image
+        setImageURL(res.media_details.sizes[size].source_url);
+        setMediaObj(res);
+      });
+    }
   });
 
   return <div className="media-file">

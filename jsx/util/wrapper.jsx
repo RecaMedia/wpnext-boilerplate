@@ -52,6 +52,10 @@ class Wrapper extends React.Component {
     }
   }
 
+  /*
+	* All children objects are supplied with "cookies", "response", and "query" props
+	*/
+
 	render() {
     return <div id="Wrapper">
       <HeadStatic/>
