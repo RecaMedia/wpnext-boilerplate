@@ -1,7 +1,7 @@
 import { parseCookies } from 'nookies';
 import JSCookies from 'js-cookie';
 
-export default (ctx) => {
+const cookieParser = (ctx) => {
 
   // Default
   let cookies = null;
@@ -17,3 +17,5 @@ export default (ctx) => {
 
   return cookies;
 }
+
+export default cookieParser;
