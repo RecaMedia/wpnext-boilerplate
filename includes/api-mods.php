@@ -30,7 +30,7 @@ add_action( 'rest_api_init', function () {
   ));
 
   // Modify posts route to include complete author info
-  register_rest_field(array('page','post'), 'author', array(
+  register_rest_field('post', 'author', array(
     'get_callback' => function($post_obj) {
       // Create request from users endpoint by id.
       $request  = new \WP_REST_Request( 'GET', '/wp/v2/users/' . $post_obj['author']);
@@ -55,16 +55,20 @@ add_action( 'rest_api_init', function () {
   // Modify posts route to include complete featured media
   register_rest_field(array('page','post'), 'featured_media', array(
     'get_callback' => function($post_obj) {
-      // Create request from users endpoint by id.
-      $request  = new \WP_REST_Request( 'GET', '/wp/v2/media/' . $post_obj['featured_media']);
-      // Parse request to get data.
-      $response = rest_do_request($request);
-      // Handle if error.
-      if ($response->is_error()) {
-        return array('error' => 'Something broke with getting media object.');
+      if ($post_obj['featured_media']) {
+        // Create request from users endpoint by id.
+        $request  = new \WP_REST_Request( 'GET', '/wp/v2/media/' . $post_obj['featured_media']);
+        // Parse request to get data.
+        $response = rest_do_request($request);
+        // Handle if error.
+        if ($response->is_error()) {
+          return array('error' => 'Something broke with getting media object.');
+        }
+        // Return data
+        return $response->get_data();
+      } else {
+        return $post_obj['featured_media'];
       }
-      // Return data
-      return $response->get_data();
     },
     'update_callback' => function($media_obj, $post_obj) {
       return $media_obj;
@@ -76,7 +80,7 @@ add_action( 'rest_api_init', function () {
   ));
 
   // Modify posts route to include complete category info
-  register_rest_field(array('page','post'), 'categories', array(
+  register_rest_field('post', 'categories', array(
     'get_callback' => function($post_obj) {
       $categories = [];
       foreach ($post_obj['categories'] as $index => $category_id) {
@@ -104,7 +108,7 @@ add_action( 'rest_api_init', function () {
   ));
 
   // Modify posts route to include complete tag info
-  register_rest_field(array('page','post'), 'tags', array(
+  register_rest_field('post', 'tags', array(
     'get_callback' => function($post_obj) {
       $categories = [];
       foreach ($post_obj['tags'] as $index => $tag_id) {

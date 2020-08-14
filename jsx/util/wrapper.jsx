@@ -53,8 +53,8 @@ class Wrapper extends React.Component {
   }
 
   /*
-	* All children objects are supplied with "cookies", "response", and "query" props
-	*/
+  * Script for stripe form - <script src="https://js.stripe.com/v3/"></script>
+  */
 
 	render() {
     return <div id="Wrapper">
@@ -68,7 +68,6 @@ class Wrapper extends React.Component {
         {React.cloneElement(this.props.children, Object.assign({}, this.props, {store, WPInfo:this.state.WPInfo}))}
       </div>
       <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-      <script src="https://js.stripe.com/v3/"></script>
     </div>;
 	}
 }

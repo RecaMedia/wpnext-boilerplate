@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-export default () => {
+const headStatic = () => {
   return <Head>
     <meta httpEquiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -10,3 +10,5 @@ export default () => {
     <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicon.ico"/>
   </Head>;
 }
+
+export default headStatic;
