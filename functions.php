@@ -16,7 +16,7 @@ function admin_includes() {
 // Set permalinks
 function reset_permalinks() {
   global $wp_rewrite;
-  $wp_rewrite->set_permalink_structure('/blog/%postname%/');
+  $wp_rewrite->set_permalink_structure('/blog/%postname%');
   $wp_rewrite->flush_rules();
 }
 
@@ -49,6 +49,105 @@ function my_admin_page_contents() {
   require_once('includes/settings-page.php');
 }
 
+// Our custom post type function
+function create_dynamic_posttype() {
+  register_post_type('dynamic_page',
+    // custom post type options
+    array(
+      'labels' => array(
+        'name' => __( 'Dynamic Pages' ),
+        'singular_name' => __( 'Dynamic Page' )
+      ),
+      'public' => true,
+      'has_archive' => false,
+      'hierarchical' => false,
+      'rewrite' => array(
+        'slug' => '/',
+        'with_front' => false,
+        'pages' => true
+      ),
+      'show_ui' => false,
+      'show_in_menu' => false,
+      'show_in_rest' => false,
+    )
+  );
+}
+
+// Remove from main menu
+function remove_dynamic_posttype_menu() {
+  remove_menu_page('edit.php?post_type=dynamic_page');
+}
+
+// Create dynamic links that will be listed within menu items
+function read_pages_for_dynamic_posttype_list() {
+  // Defaults for retrieving non-wordpress dynamic pages that are not excluded
+  $dir = dirname(__FILE__) . "/pages";
+  // Strip dashes and underscores to replace with spaces
+  function processFileName($string, $makeIntoTitle = false) {
+    if ($makeIntoTitle) {
+      $string = trim(ucwords(str_replace('.js', ' ', str_replace('_', ' ', str_replace('-', ' ', $string)))));
+    } else {
+      $string = str_replace('.js', ' ', $string);
+    }
+    return $string;
+  }
+  // Private function to process the directory
+  function processDir($base, $dir) {
+    // Array that will be returned
+    $dir_list = array();
+    $exclude = array("[slug]", "blog", "_app.js", "index.js");
+    // Process loop
+    if (is_dir($dir)){
+      if ($dh = opendir($dir)){
+        while (($file = readdir($dh)) !== false){
+          if ($file != "." && $file != ".." && !in_array($file, $exclude)) {
+            if (is_dir($file)) {
+              $sub_dir = $dir . "/" . $file;
+              $sub_list = processDir($file, $sub_dir);
+              $dir_list = array_merge($dir_list, $sub_list);
+            } else {
+              $dir_list[] = array(
+                "pageName" => processFileName($file, true),
+                "pagePath" => $base . "/" . processFileName($file)
+              );
+            }
+          }
+        }
+        closedir($dh);
+      }
+    }
+    // Return array
+    return $dir_list;
+  }
+  // Complete files to list
+  $list = processDir("", $dir);
+  // Get all existing post
+  $wp_dy_post = get_posts([
+    'post_type' => 'dynamic_page',
+    'post_status' => 'publish',
+    'numberposts' => -1
+  ]);
+  // Verify we haven't created the post already before creating it
+  foreach($list as $page_data) {
+    $found = false;
+    foreach($wp_dy_post as $post) {
+      if ($post->post_title == $page_data['pageName']) {
+        $found = true;
+      }
+    }
+    if (!$found) {
+      wp_insert_post(array(
+        'post_title' => $page_data['pageName'],
+        'post_name' => $page_data['pagePath'],
+        'post_content' => 'Dynamic page for ' . $page_data['pageName'],
+        'post_status' => 'publish',
+        'post_author' => 1,
+        'post_type' => 'dynamic_page'
+      ));
+    }
+  }
+}
+
 // Init theme
 function init_theme() {
   // Add menu routes
@@ -60,7 +159,6 @@ function init_theme() {
   // Register theme setting "wpnext_show_editor"
   register_setting('wpnext', 'wpnext_show_editor');
   add_option('wpnext_show_editor', false);
-
   // Get "wpnext_show_editor" value to determine if we show editor
   $show_classic_editor = get_option('wpnext_show_editor');
   if (!$show_classic_editor) {
@@ -76,10 +174,16 @@ function init_theme() {
   add_theme_support('post-thumbnails');
   // Register menu locations
   register_all_menus();
+
+  read_pages_for_dynamic_posttype_list();
 }
 
 // Run functions on init
 add_action('init', 'init_theme');
+// Register custom post type
+add_action('init', 'create_dynamic_posttype');
+// Remove menu item
+add_action('admin_menu', 'remove_dynamic_posttype_menu');
 // Add CSS grid
 add_action('admin_enqueue_scripts', 'admin_includes');
 // Reset permalinks
