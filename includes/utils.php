@@ -20,6 +20,7 @@ function process($index, $name, $desc, $size, $type, $value, $options) {
 
   switch($type) {
     case "group":
+    case "repeater":
       $options['fields'] = build_field_objects($options['fields']);
     break;
   }

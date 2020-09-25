@@ -29,14 +29,17 @@ a.ui-btn, button.ui-btn, .ui-btn {
   }
 
   &--icon {
+    align-items: center;
     border-radius: 50%;
+    display: flex;
     font-size: 1.2rem;
-    height: 28px;
+    height: 22px;
+    justify-content: center;
     line-height: 1;
     padding: 0;
     text-align: center;
     vertical-align: middle;
-    width: 28px;
+    width: 22px;
   }
 
   &:hover {

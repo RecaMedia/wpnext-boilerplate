@@ -8,6 +8,7 @@ import InputEditor from '../inputs/editor';
 import InputGroup from '../inputs/group';
 import InputText from '../inputs/text';
 import InputRadio from '../inputs/radio';
+import InputRepeater from '../inputs/repeater';
 import InputSelect from '../inputs/select';
 import InputTextarea from '../inputs/textarea';
 import InputFile from '../inputs/file';
@@ -91,6 +92,9 @@ export default class UIField extends React.Component {
             break;
             case "group" :
               input = <InputGroup key={i} useKey={has_multiple_keys} index={i} inputKey={key} value={value} options={form[key].options} returnValue={this._handleValue}/>
+            break;
+            case "repeater" :
+              input = <InputRepeater key={i} useKey={has_multiple_keys} index={i} inputKey={key} value={value} options={form[key].options} returnValue={this._handleValue}/>
             break;
             case "text" :
               input = <InputText key={i} useKey={has_multiple_keys} index={i} inputKey={key} value={value} returnValue={this._handleValue}/>
