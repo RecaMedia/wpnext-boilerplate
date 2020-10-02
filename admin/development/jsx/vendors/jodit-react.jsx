@@ -6,6 +6,9 @@ import FileManager from '../components/file-manager';
 
 import 'brace/theme/idle_fingers';
 
+// Change this according to the name of your theme directory
+const theme_name = "wpnext";
+
 class JoditEditor extends React.Component {
 
   constructor(props) {
@@ -39,7 +42,7 @@ class JoditEditor extends React.Component {
   }
 
   _customButtons() {
-    let admin_assets = window.location.protocol + "//" + window.location.hostname + "/wp-content/themes/wp-next/assets/";
+    let admin_assets = window.location.protocol + "//" + window.location.hostname + "/wp-content/themes/" + theme_name + "/assets/";
     
     return [{
       name: 'File Manager',

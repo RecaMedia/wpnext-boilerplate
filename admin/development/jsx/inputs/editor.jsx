@@ -1,5 +1,7 @@
 import React from 'react';
+import FileManager from '../components/file-manager';
 import JoditEditor from "../vendors/jodit-react";
+import JoditButtons from "../utilities/jodit_buttons";
 
 export default class InputEditor extends React.Component {
 
@@ -10,39 +12,23 @@ export default class InputEditor extends React.Component {
 
     this.mode = (this.props.options != undefined && this.props.options.hasOwnProperty("mode") ? this.props.options.mode : "slim");
 
-    let removeButtons;
+    let buttons;
     switch(this.mode) {
       case "full":
-        removeButtons = []
+        buttons = JoditButtons.buttons_full
       break;
       case "standard":
-        removeButtons = [
-          "hr",
-          "ol",
-          "about",
-          "italic",
-          "format",
-          "fullsize",
-          "justify"
-        ]
+        buttons = JoditButtons.buttons_med
       break;
       case "slim":
       default:
-        removeButtons = [
-          "hr",
-          "ol",
-          "about",
-          "italic",
-          "format",
-          "fullsize",
-          "justify"
-        ]
+        buttons = JoditButtons.buttons_slim
       break;
     }
 
     this.state = {
       value: this.props.value,
-      removeButtons
+      buttons
     }
   }
 
@@ -75,7 +61,9 @@ export default class InputEditor extends React.Component {
         }}
         value={this.state.value}
         config={{
-          removeButtons: this.state.removeButtons
+          buttons: this.state.buttons,
+          buttonsMD: JoditButtons.buttons_med,
+          buttonsXS: JoditButtons.buttons_slim,
         }}
         onChange={this._onChange}
       />
