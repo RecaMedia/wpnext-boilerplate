@@ -63,6 +63,7 @@ $ npm start
 ```
 
 **Do NOT forget**
+
 Make sure you modify name of the directory used for the theme folder `/admin/development/jsx/vendors/jodit-react.jsx`
 
 You will need two URLs to make this theme work. The first URL would be for accessing the WordPress admin and it's contents. The second URL for the Front-End which is run by NextJS. Use the `vhost-example.txt` example below for the second URL. Also, you'll need to change the home URL within the WordPress admin settings. Ex: `wp.yourdomain.local & yourdomain.local`.
