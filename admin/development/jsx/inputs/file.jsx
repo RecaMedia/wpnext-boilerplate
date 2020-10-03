@@ -42,10 +42,17 @@ export default class InputFile extends React.Component {
   }
 
   render() {
+
+    let button_name = "Select File...";
+    if (this.state.value) {
+      button_name = this.state.value.replace(/^.*[\\\/]/, '');
+    }
+
     return (
       <div>
-        <div className="ui-file-input" onClick={() => this._showDialog()}>
-          <div className="btn ui-btn">Select File</div>
+        <div id="InputFileSelector" className="ui-file-input">
+          {(this.state.value ? <a className="btn ui-btn--icon ui-file-input__remove-btn" onClick={() => this._onChange("")}></a> : null)}
+          <div id="InputFileButton" className="btn ui-btn" onClick={() => this._showDialog()}>{button_name}</div>
           <input type="text" className="form-control" value={this.state.value} onChange={this._onChange} disabled/>
         </div>
       </div>

@@ -6,6 +6,7 @@
   display: flex;
   outline: none;
   padding: 0;
+  position: relative;
   width: 100%;
 
   &:focus, &:active {
@@ -13,11 +14,37 @@
   }
 
   .btn {
-    line-height: 26px;
+    line-height: 30px;
+    overflow: hidden;
+    padding-right: 30px;
+    text-overflow: ellipsis;
     white-space: nowrap;
+    width: 100%;
+  }
+
+  &__remove-btn {
+    background-color: #fff;
+    height: 12px !important;
+    padding: 0 !important;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 12px !important;
+    z-index: 1;
+
+    &:after {
+      align-items: center;
+      content: "x";
+      display: flex;
+      font-size: 12px;
+      font-weight: bold;
+      justify-content: center;
+    }
   }
 
   & > input {
+    display: none;
     margin-left: 15px;
     min-width: 50px;
     pointer-events: none;
