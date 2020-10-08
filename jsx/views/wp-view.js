@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Transition} from 'react-transition-group';
+import GeneralFunctions from 'root/jsx/util/general-functions';
 import MainMenu from '../includes/main-menu';
 import Head from '../modules/head';
 import Header from '../modules/header';
@@ -21,16 +22,6 @@ const Post = ({type, WPInfo, response}) => {
     exited: { opacity: 0 }
   };
 
-  function stripTags(str, allow = ''){
-    // making sure the allow arg is a string containing only tags in lowercase (<a><b><c>)
-    allow = (((allow || '') + '').toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
-      var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi;
-      var commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
-      return str.replace(commentsAndPhpTags, '').replace(tags, function ($0, $1) {
-      return allow.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 :'';
-    });
-  }
-
   /*
 	* All views are supplied with "cookies", "response", and "query" props
 	*/
@@ -44,7 +35,7 @@ const Post = ({type, WPInfo, response}) => {
     meta.name = (WPInfo != null ? WPInfo.name : "");
     if (type == "post") {
       meta.title = response.title.rendered;
-      meta.description = (response.excerpt ? stripTags(response.excerpt.rendered) : '');
+      meta.description = (response.excerpt ? GeneralFunctions.stripTags(response.excerpt.rendered) : '');
       meta.url = response.link;
       meta.keywords = response.meta.join(", ");
       meta.image = (response.featured_media ? response.featured_media.source_url : '');
