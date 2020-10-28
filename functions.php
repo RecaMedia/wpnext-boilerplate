@@ -34,7 +34,7 @@ function register_all_menus() {
 function my_admin_menu() {
   add_menu_page(
     __( 'WPNext Settings', 'wpnext' ),
-    __( 'WPNext', 'wpnext' ),
+    __( 'WPNext Kit', 'wpnext' ),
     'manage_options',
     'wpnext-settings',
     'my_admin_page_contents',
@@ -148,6 +148,11 @@ function read_pages_for_dynamic_posttype_list() {
   }
 }
 
+function wpnext_admin_request() {
+  require_once('includes/admin-calls.php');
+  die();
+}
+
 // Init theme
 function init_theme() {
   // Add menu routes
@@ -190,6 +195,8 @@ add_action('admin_enqueue_scripts', 'admin_includes');
 add_action('after_setup_theme', 'reset_permalinks');
 // Add admin page & menu
 add_action( 'admin_menu', 'my_admin_menu' );
+// Hook that works with the WordPress AJAX functionality
+add_action('wp_ajax_wpnext_admin_request', 'wpnext_admin_request'); 
 // Add modified routes
-include('includes/api-mods.php');
+require_once('includes/api-mods.php');
 ?>
