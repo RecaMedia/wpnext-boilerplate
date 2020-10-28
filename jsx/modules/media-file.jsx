@@ -1,49 +1,72 @@
-import {useEffect, useState} from 'react';
+import React from 'react';
 import {Transition} from 'react-transition-group';
 import apiCall from '../util/api-call';
 import Loading from '../util/loading';
 
-const MediaFile = ({media, size, children}) => {
-  // Acceptable sizes are ['medium','large','thumbnail','medium_large','1536x1536','full']
-  const [loading, setLoading] = useState((typeof media === 'object' ? false : true));
-  const [imageURL, setImageURL] = useState((typeof media === 'object' ? media.media_details.sizes[size].source_url : "/static/img/placeholder.png"));
-  const [mediaObj, setMediaObj] = useState(media);
+const transitionStyles = {
+  entering: { opacity: 0}, 
+  entered: { opacity: 1},
+  exiting: { opacity: 0 },
+  exited: { opacity: 0 }
+};
 
-  const defaultStyle = {
-    backgroundImage: "url('" + imageURL + "')",
-    transition: 'opacity 250ms ease',
-    opacity: 1
-  };
+export default class MediaFile extends React.Component {
 
-  const transitionStyles = {
-    entering: { opacity: 0}, 
-    entered: { opacity: 1},
-    exiting: { opacity: 0 },
-    exited: { opacity: 0 }
-  };
+	constructor(props) {
+    super(props);
+    
+    // Acceptable sizes are ['medium','large','thumbnail','medium_large','1536x1536','full']
+    // Loading is set to true if a media ID is received rather than an object
+    this.state = {
+      loading: (typeof this.props.media === 'object' ? false : true),
+      imageURL: (typeof this.props.media === 'object' ? this.props.media.media_details.sizes[this.props.size].source_url : "/static/img/placeholder.png"),
+      media: this.props.media
+		}
+  }
 
-  useEffect(() => {
-    if (typeof media === 'number') {
-      apiCall("wp/v2/media/" + media).then((res) => {
-        // Turn off loading
-        setLoading(false);
-        // Replace placeholder with actual image
-        setImageURL(res.media_details.sizes[size].source_url);
-        setMediaObj(res);
+  static getDerivedStateFromProps(props, state) {
+    if ((typeof props.media === 'object' ? props.media.title.rendered !== state.media.title.rendered : props.media !== state.media)) {
+      return {
+        loading: (typeof props.media === 'object' ? false : true),
+        imageURL: (typeof props.media === 'object' ? props.media.media_details.sizes[props.size].source_url : "/static/img/placeholder.png"),
+        media: props.media
+      }
+    } else {
+      return null;
+    }
+  }
+  
+  componentDidMount() {
+    if (typeof this.state.media === 'number') {
+      apiCall("wp/v2/media/" + this.state.media).then((res) => {
+        this.setState({
+          loading: false,
+          imageURL: res.media_details.sizes[this.props.size].source_url,
+          media: res
+        })
       });
     }
-  });
+  }
 
-  return <div className="media-file">
-    <Transition in={!loading} timeout={250}>
-      {sec_trans_state => (
-        <div className="media-file__container" style={{...defaultStyle, ...transitionStyles[sec_trans_state]}}>
-          {children}
-        </div>
-      )}
-    </Transition >
-    {(loading ? <Loading className="media-file__loading"/> : null)}
-  </div>
+	render() {
+
+    const defaultStyle = {
+      backgroundImage: "url('" + this.state.imageURL + "')",
+      transition: 'opacity 250ms ease',
+      opacity: 1
+    };
+
+    return (
+      <div className="media-file">
+        <Transition in={!this.state.loading} timeout={250}>
+          {sec_trans_state => (
+            <div className="media-file__container" style={{...defaultStyle, ...transitionStyles[sec_trans_state]}}>
+              {this.props.children}
+            </div>
+          )}
+        </Transition >
+        {(this.state.loading ? <Loading className="media-file__loading"/> : null)}
+      </div>
+    )
+  }
 }
-
-export default MediaFile;

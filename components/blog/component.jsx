@@ -50,6 +50,8 @@ export default class Blog extends React.Component {
 		this.setState({
 			displayList: this.processPages(this.state.list, go_to_page),
 			currentPage: go_to_page,
+		}, () => {
+			window.scrollTo(0, 0);;
 		});
 	}
 

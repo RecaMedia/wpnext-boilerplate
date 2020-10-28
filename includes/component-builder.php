@@ -12,7 +12,6 @@ class componentBuilder {
 
   // PHP 5 Constructor
   function __construct() {
-    $this->post = get_post($object['id'], 'OBJECT');
     $this->loaded_components = array();
     $this->init();
   }
