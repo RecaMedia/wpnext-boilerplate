@@ -61,11 +61,9 @@ if (!$server_status_check || ((isset($_POST['page']) && $_POST['page'] == "wpnex
   if ($is_linux) {
     update_option('wpnext_server_os', "Linux");
     $server_status .= "OS: Linux\n";
-    $start_comm_type = "linux";
   } else if ($is_windows) {
     update_option('wpnext_server_os', "Windows");
     $server_status .= "OS: Windows\n";
-    $start_comm_type = "windows";
   }
 
   // Check if Node JS is installed
@@ -89,20 +87,14 @@ if (!$server_status_check || ((isset($_POST['page']) && $_POST['page'] == "wpnex
     update_option('wpnext_server_node_mods', 'Installed');
     $server_status .= "Node Modules: Installed\n";
   } else {
-    update_option('wpnext_server_node_mods', 'Not Installed');
-    $server_status .= "Node Modules: Not Installed\n";
+    update_option('wpnext_server_node_mods', 'Not Installed (<a href="#" onClick="terminalProcess(\'install\')">Install Modules</a>)');
+    $server_status .= "Node Modules: Not Installed (<a href=\"#\" onClick=\"terminalProcess('install')\">Install Modules</a>)\n";
   }
-} else {
-  $os = get_option('wpnext_server_os');
-  if ($os == "Linux") {
-    $start_comm_type = "linus";
-  }
-  if ($os == "Windows") {
-    $start_comm_type = "windows";
-  }
-  $server_status = "OS: ".$os."\nNode: ".get_option('wpnext_server_node')."\nNPM: ".get_option('wpnext_server_npm')."\nNode Modules: ".get_option('wpnext_server_node_mods');
-}
 
+  update_option('wpnext_server_status', true);
+} else {
+  $server_status = "OS: ".get_option('wpnext_server_os')."\nNode: ".get_option('wpnext_server_node')."\nNPM: ".get_option('wpnext_server_npm')."\nNode Modules: ".get_option('wpnext_server_node_mods');
+}
 
 $server_info = json_decode(file_get_contents(get_template_directory_uri().'/configs/server-info.json'));
 $classic_editor_installed = check_for_plugin($classic_editor_plugin['full_path']);
@@ -136,9 +128,9 @@ function checkStatus() {
     success:function(data) {
       var result = JSON.parse(data);
       if (result.status) {
-        server_toggle = '<input type="button" class="button button-primary" value="Stop Server" style="width:100px;" onClick="toggleServer(\'stop\');">';
+        server_toggle = '<input type="button" class="button button-primary" value="Stop Server" style="width:100px;" onClick="terminalProcess(\'stop\');">';
       } else {
-        server_toggle = '<input type="button" class="button button-primary" value="Start Server" style="width:100px;" onClick="toggleServer(\'start\');">';
+        server_toggle = '<input type="button" class="button button-primary" value="Start Server" style="width:100px;" onClick="terminalProcess(\'start\');">';
       }
       jQuery('.status-icon').addClass('server-'+(result.status?'on':'off'));
       jQuery('#ServerToggle').html(server_toggle);
@@ -148,22 +140,25 @@ function checkStatus() {
     }
   })
 }
-function toggleServer(toggle) {
-  if (toggle == "start") {
-    var comms;
-    var type = '<?php echo $start_comm_type;?>';
-    if (type == 'linux') {
-      comms = [
-        'cd wp-content/themes/wpnext',
-        'npm run build'
-      ];
-    } else {
-      comms = [
-        'npm -v',
-        'cd \'./wp-content/themes/wpnext/\'',
-        'npm run build'
-      ];
-    }
+function terminalProcess(type) {
+  var comms;
+  if (type == "start") {
+    comms = [
+      'cd ../wp-content/themes/wpnext',
+      'npm run build',
+      'npm start'
+    ];
+  } else if (type == "stop") {
+    comms = [
+      'cd ../wp-content/themes/wpnext',
+      '^C'
+    ];
+  } else if (type == "install") {
+    comms = [
+      'cd ../wp-content/themes/wpnext',
+      'npm install',
+      'npm audit fix'
+    ];
   }
   jQuery.ajax({
     url: ajaxurl,
@@ -177,8 +172,10 @@ function toggleServer(toggle) {
       var result = JSON.parse(data);
       result.response.forEach((line, index) => {
         jQuery('#TermOutput').append(line+"\n");
-      })
-      checkStatus();
+      });
+      if (type == "start" || type == "stop") {
+        checkStatus();
+      }
     },  
     error: function(errorThrown){
       console.log(errorThrown.error);
@@ -193,11 +190,11 @@ jQuery(document).ready(function(){
   <h1>WPNext Theme Kit</h1>
   <form method="post" action="/wp-admin/admin.php?page=wpnext-settings">
   <input type="hidden" name="page" value="wpnext-settings"/>
-  <div id="dashboard-widgets-wrap" class="postbox" style="margin: 0 0 20px;">
+  <div id="dashboard-widgets-wrap">
     <div id="dashboard-widgets" class="metabox-holder">
       <div id="postbox-container-1" class="postbox-container">
         <div id="normal-sortables" class="meta-box-sortables ui-sortable">
-          <div id="wpnext_url_manager">
+          <div id="wpnext_url_manager" class="postbox">
             <h2 class="hndle" style="cursor:default;"><span>URL Manager</span></h2>
             <div class="inside">
               <table style="width:100%;">
@@ -223,7 +220,7 @@ jQuery(document).ready(function(){
       </div>
       <div id="postbox-container-2" class="postbox-container">
         <div id="normal-sortables" class="meta-box-sortables ui-sortable">
-          <div id="wpnext_classic_editor_install">
+          <div id="wpnext_classic_editor_install" class="postbox">
             <h2 class="hndle" style="cursor:default;"><span>Classic Editor</span></h2>
             <div class="inside">
               <p>Classic editor allows you to easily transfer content to WPNext Builder.</p>
