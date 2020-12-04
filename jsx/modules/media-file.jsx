@@ -14,12 +14,14 @@ export default class MediaFile extends React.Component {
 
 	constructor(props) {
     super(props);
+
+    console.log(this.props.media, this.props.size);
     
     // Acceptable sizes are ['medium','large','thumbnail','medium_large','1536x1536','full']
     // Loading is set to true if a media ID is received rather than an object
     this.state = {
       loading: (typeof this.props.media === 'object' ? false : true),
-      imageURL: (typeof this.props.media === 'object' ? this.props.media.media_details.sizes[this.props.size].source_url : "/static/img/placeholder.png"),
+      imageURL: (typeof this.props.media === 'object' ? (this.props.media.media_details.sizes[this.props.size] != undefined ? this.props.media.media_details.sizes[this.props.size].source_url : this.props.media.media_details.sizes.medium.source_url) : "/static/img/placeholder.png"),
       media: this.props.media
 		}
   }
@@ -28,7 +30,7 @@ export default class MediaFile extends React.Component {
     if ((typeof props.media === 'object' ? props.media.title.rendered !== state.media.title.rendered : props.media !== state.media)) {
       return {
         loading: (typeof props.media === 'object' ? false : true),
-        imageURL: (typeof props.media === 'object' ? props.media.media_details.sizes[props.size].source_url : "/static/img/placeholder.png"),
+        imageURL: (typeof props.media === 'object' ? (props.media.media_details.sizes[props.size] != undefined ? props.media.media_details.sizes[props.size].source_url : props.media.media_details.sizes.medium.source_url) : "/static/img/placeholder.png"),
         media: props.media
       }
     } else {
@@ -39,9 +41,10 @@ export default class MediaFile extends React.Component {
   componentDidMount() {
     if (typeof this.state.media === 'number') {
       apiCall("wp/v2/media/" + this.state.media).then((res) => {
+        let imageURL = (res.media_details.sizes[this.props.size] != undefined ? res.media_details.sizes[this.props.size].source_url : res.media_details.sizes.medium.source_url);
         this.setState({
           loading: false,
-          imageURL: res.media_details.sizes[this.props.size].source_url,
+          imageURL,
           media: res
         })
       });
