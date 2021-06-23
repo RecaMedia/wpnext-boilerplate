@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {decode} from 'html-entities';
 import Nav from './nav';
 import apiCall from '../util/api-call';
 
@@ -35,7 +36,7 @@ export default class Header extends React.Component {
         <div id="SiteName">
           <a href="/">
             <img className="logo" src="/static/img/sr.svg"/>
-            <span>{this.props.name}</span>
+            <span dangerouslySetInnerHTML={{__html: decode(this.props.name)}}/>
           </a>
         </div>
         <Nav menu={this.state.menu}/>

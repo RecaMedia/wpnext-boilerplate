@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {decode} from 'html-entities';
 import GeneralFunc from '../util/general-functions';
 
 const screen_reader_class = {
@@ -53,7 +54,7 @@ const MenuItem = ({item}) => {
 
   return <li className={"nav__menu-item" + (expanded ? " nav__menu-item--open" : "")} {...list_attr} onClick={() => toggleExpand()}>
     {(item.description ? <span className="nav__menu-desc">{item.description}</span> : null)}
-    <a className="nav__menu-link" href={URL} {...attr}>{item.title}{(current ? <span style={screen_reader_class}>(current)</span> : null)}</a>
+    <a className="nav__menu-link" href={URL} {...attr}>{decode(item.title)}{(current ? <span style={screen_reader_class}>(current)</span> : null)}</a>
     {children != null ? <Menu items={children}/> : null}
   </li>
 }
