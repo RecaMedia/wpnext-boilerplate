@@ -17,9 +17,11 @@ var PROD_ADM = "admin";
 
 var NEXT_DEV_SASS = "assets/scss/";
 var NEXT_DEV_IMG = "assets/img/";
+var NEXT_DEV_COMPS = "components/";
 
-var NEXT_SCSS = NEXT_DEV_SASS + '**/*.scss'
-var NEXT_IMG = NEXT_DEV_IMG + '**/*.*'
+var NEXT_SCSS = NEXT_DEV_SASS + '**/*.scss';
+var NEXT_IMG = NEXT_DEV_IMG + '**/*.*';
+var NEXT_COMP_SCSS = NEXT_DEV_COMPS + '**/*.scss';
 
 var PROD_CSS = MAIN_DIR + AST_DIR + "/css";
 var PROD_IMG = MAIN_DIR + AST_DIR + "/img";
@@ -138,6 +140,7 @@ gulp.task('watch', function() {
 		gulp.watch(PROD_ADM, browserSync.reload);
 	} else if (arg.type == 'next') {
 		gulp.watch(NEXT_SCSS, gulp.series('build-sass'));
+		gulp.watch(NEXT_COMP_SCSS, gulp.series('build-sass'));
 	}
 });
 
