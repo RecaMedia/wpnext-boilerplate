@@ -6,7 +6,9 @@ WPNext was created with the goal of combining the development style of [ReactJS]
 
 # Getting Started
 
-Copy this repo to a theme folder titled `/wpnext`. You can changes this name but keep in mind there may be code tied to this path, make sure you do a find/replace when doing so. This boilerplate uses [Gulp JS](https://gulpjs.com/) to build and run development. Run all commands within the theme folder.
+Copy this repo to a theme folder titled `/wpnext`. You can changes this name but keep in mind there may be code tied to this path, make sure you do a find/replace when doing so. One location to check for theme folder path `/admin/development/jsx/vendors/jodit-react.jsx`.
+
+This boilerplate uses [Gulp JS](https://gulpjs.com/) to build and run development. Run all commands within the theme folder.
 
 **Install**
 ```sh
@@ -62,9 +64,7 @@ $ npm run build
 $ npm start
 ```
 
-**Do NOT forget**
-
-Make sure you modify name of the directory used for the theme folder `/admin/development/jsx/vendors/jodit-react.jsx`
+**Important Note**
 
 You will need two URLs to make this theme work. The first URL would be for accessing the WordPress admin and it's contents. The second URL for the Front-End which is run by NextJS. Use the `vhost-example.txt` example below for the second URL. Also, you'll need to change the home URL within the WordPress admin settings. Ex: `wp.yourdomain.local & yourdomain.local`.
 
