@@ -6,7 +6,7 @@ WPNext was created with the goal of combining the development style of [ReactJS]
 
 # Getting Started
 
-This boilerplate uses [Gulp JS](https://gulpjs.com/) to build and run development. Run all commands within the theme folder.
+Copy this repo to a theme folder titled `/wpnext`. You can changes this name but keep in mind there may be code tied to this path, make sure you do a find/replace when doing so. This boilerplate uses [Gulp JS](https://gulpjs.com/) to build and run development. Run all commands within the theme folder.
 
 **Install**
 ```sh
@@ -70,16 +70,16 @@ You will need two URLs to make this theme work. The first URL would be for acces
 
 ```sh
 <VirtualHost *:80>
-	ServerName yourdomain.local
-	DocumentRoot "c:/path/to/themes/wp-next"
+  ServerName yourdomain.local
+  DocumentRoot "c:/path/to/themes/wp-next"
 
   <Location />
     ProxyPass http://localhost:3000/
   </Location>
 
-	<Directory "c:/path/to/wp-content/themes/wp-next">
-		...
-	</Directory>
+  <Directory "c:/path/to/wp-content/themes/wpnext">
+    ...
+  </Directory>
 </VirtualHost>
 ```
 
